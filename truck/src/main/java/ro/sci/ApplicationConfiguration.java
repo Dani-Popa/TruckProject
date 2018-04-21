@@ -20,6 +20,12 @@ public class ApplicationConfiguration {
     }
 
     @Bean
+    public RouteDAO routeDao() {
+        return new RouteDAOImpl("postgresql","localhost", "5433", "trucks",
+                "postgres", "postgres");
+    }
+
+    @Bean
     public DataSource dataSource() {
         String url = new StringBuilder()
                 .append("jdbc:")
