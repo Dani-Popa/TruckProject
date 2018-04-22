@@ -72,6 +72,11 @@ public class TruckDAOImpl implements TruckDAO {
         return null;
     }
 
+    @Override
+    public Truck delete(Truck c) {
+        return null;
+    }
+
     private static Connection newConnection(String type,
                                             String host,
                                             String port,

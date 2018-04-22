@@ -15,8 +15,14 @@ public class ApplicationConfiguration {
 
     @Bean
     public TruckDAO truckDao() {
-        return new TruckDAOImpl("postgresql","localhost", "5432", "trucks",
-                "postgres", "test");
+        return new TruckDAOImpl("postgresql","localhost", "5433", "trucks",
+                "postgres", "postgres");
+    }
+
+    @Bean
+    public RouteDAO routeDao() {
+        return new RouteDAOImpl("postgresql","localhost", "5433", "trucks",
+                "postgres", "postgres");
     }
 
     @Bean
@@ -33,13 +39,13 @@ public class ApplicationConfiguration {
                 .append("://")
                 .append("localhost")
                 .append(":")
-                .append("5432")
+                .append("5433")
                 .append("/")
                 .append("trucks")
                 .append("?user=")
                 .append("postgres")
                 .append("&password=")
-                .append("test").toString();
+                .append("postgres").toString();
 
         return  new SingleConnectionDataSource(url, false);
     }

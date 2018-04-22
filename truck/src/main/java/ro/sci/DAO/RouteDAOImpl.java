@@ -39,6 +39,8 @@ public class RouteDAOImpl implements RouteDAO {
                 Route r = new Route();
                 r.setStart(resultSet.getString(1));
                 r.setDestination(resultSet.getString(2));
+                r.setDistance(resultSet.getFloat(3));
+                r.setStatus(resultSet.getString(4));
                 result.add(r);
             }
         }   catch (Exception ex) {
@@ -57,7 +59,7 @@ public class RouteDAOImpl implements RouteDAO {
 
                 Statement statement = connection.createStatement();
         ) {
-            statement.execute("insert into route (start, destination) values ('" + r.getStart() + "', '" + r.getDestination() + "')");
+            statement.execute("insert into route (start, destination, distance, status) values ('" + r.getStart() + "', '" + r.getDestination() + "', " + r.getDistance() + ", '" + r.getStatus()+ "')");
         }   catch (Exception ex) {
             throw  new RuntimeException(ex);
         }
@@ -66,6 +68,11 @@ public class RouteDAOImpl implements RouteDAO {
 
     @Override
     public Route update(Route r) {
+        return null;
+    }
+
+    @Override
+    public Route delete(Route r) {
         return null;
     }
 

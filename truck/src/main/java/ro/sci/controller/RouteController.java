@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ro.sci.domain.Route;
 import ro.sci.service.RouteService;
 
@@ -32,5 +33,14 @@ public class RouteController {
 
         return "listRoutes";
     }
+
+    /*@RequestMapping(value ="/routes", method = RequestMethod.DELETE)
+    public String deleteRouteById(@RequestParam(value = routeId, required = true, defaultValue = "") Route route, Model model) {
+        routeService.deleteRouteById(route);
+        List<Route> routes = routeService.getAll();
+        model.addAttribute("routes", routes);
+
+        return "listRoutes";
+    }*/
 
 }
