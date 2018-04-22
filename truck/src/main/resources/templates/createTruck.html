@@ -10,6 +10,7 @@
 
 <form action="#" th:action="@{/trucks}" th:object="${truck}" method="post">
     <input type="text" id="producer" name="producer" th:value="*{truck.producer}" />
+    <input type="text" id="model" name="model" th:value="*{truck.model}" />
     <input type="text" id="truckid" name="truckid" th:value="*{truck.truckid}" />
 
 </form>

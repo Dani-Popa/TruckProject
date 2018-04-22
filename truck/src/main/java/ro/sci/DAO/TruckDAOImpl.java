@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class TruckDAOImpl implements TruckDAO {
 
     private String dbType;
@@ -39,7 +40,8 @@ public class TruckDAOImpl implements TruckDAO {
             while(resultSet.next()) {
                 Truck c = new Truck();
                 c.setProducer(resultSet.getString(1));
-                c.setTruckid(resultSet.getInt(2));
+                c.setModel(resultSet.getString(2));
+                c.setTruckid(resultSet.getInt(3));
                 result.add(c);
             }
         }   catch (Exception ex) {
@@ -58,7 +60,7 @@ public class TruckDAOImpl implements TruckDAO {
 
                 Statement statement = connection.createStatement();
         ) {
-            statement.execute("insert into truck (producer, truckid) values('" + c.getProducer() + "', " + c.getTruckid() + ")");
+            statement.execute("insert into truck (producer, model,truckid) values('" + c.getProducer() + "', '" +c.getModel() + "', " + c.getTruckid() + ")");
         }   catch (Exception ex) {
             throw  new RuntimeException(ex);
         }
