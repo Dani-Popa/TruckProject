@@ -13,6 +13,12 @@
 
     <input type="text" id="producer" name="producer" th:value="*{producer}" />
         </div>
+
+    <div>
+        <label th:for="${model}">Model</label>
+        <input type="text" id="model" name="model" th:value="*{model}" />
+    </div>
+
     <div>
         <label th:for="${truckid}">TruckID</label>
     <input type="text" id="truckid" name="truckid" th:value="*{truckid}" />
@@ -27,23 +33,21 @@
 
 <br/>
 <br/>
-<th:block th:each="truck : ${trucks}">
-    <tr>
-        <td th:text="${truck.truckid}">A Smoke Test'</td>
-    </tr>
-</th:block>
+
 
 <table id="myTableId" cage:table="true">
     <thead>
     <tr>
         <th>producer</th>
-        <th>truckid</th>
+        <th>model</th>
+        <th>   truckid</th>
 
     </tr>
     </thead>
     <tbody>
     <tr th:each="truck : ${trucks}">
         <td th:text="${truck.producer}">1</td>
+        <td th:text="${truck.model}">Doe</td>
         <td th:text="${truck.truckid}">Doe</td>
 
     </tr>
