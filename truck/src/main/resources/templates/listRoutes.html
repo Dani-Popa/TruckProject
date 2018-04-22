@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:route="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Routes list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+
+<form action="#" th:action="@{/routes}" th:object="${route}" method="post">
+    <div>
+        <label th:for="${start}">Start</label>
+        <input type="text" id="start" name="start" th:value="*{start}" />
+    </div>
+    <div>
+        <label th:for="${destination}">Destination</label>
+        <input type="text" id="destination" name="destination" th:value="*{destination}" />
+    </div>
+    <div>
+        <label th:for="${distance}">Distance</label>
+        <input type="text" id="distance" name="distance" th:value="*{distance}" />
+    </div>
+
+    <div>
+        <label th:for="${status}">Status</label>
+        <input type="text" id="status" name="status" th:value="*{status}" />
+    </div>
+
+
+    <div>
+        <input type="submit" id="doUpdate" name="save route" value="Create route"/>
+    </div>
+</form>
+
+
+<br/>
+<br/>
+
+<table id="myTableId" route:table="true">
+    <thead>
+    <tr>
+        <th>Start</th>
+        <th>Destination</th>
+        <th>Distance</th>
+        <th>Status</th>
+        <th>Delete</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="route : ${routes}">
+        <td th:text="${route.start}"></td>
+        <td th:text="${route.destination}"></td>
+        <td th:text="${route.distance}"></td>
+        <td th:text="${route.status}"></td>
+        <td><form action="#" th:action="@{/routes}" th:object="${route}" method="delete">
+            <div><input type="submit" id="delete" name="delete route" value="Delete route"/></div></form></td>
+
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

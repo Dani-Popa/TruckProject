@@ -23,6 +23,10 @@ public class RouteServiceImpl implements RouteService {
     @Override
     public void createRoute(Route route) {
         routeDao.create(route);
+    }
 
+    @Override
+    public void deleteRouteById(Route route) {
+        routeDao.delete(route);
     }
 }

@@ -7,9 +7,6 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by sebi on 3/12/18.
- */
 public class TruckDAOImpl implements TruckDAO {
 
     private String dbType;
@@ -70,6 +67,11 @@ public class TruckDAOImpl implements TruckDAO {
 
     @Override
     public Truck update(Truck c) {
+        return null;
+    }
+
+    @Override
+    public Truck delete(Truck c) {
         return null;
     }
 
