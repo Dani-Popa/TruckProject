@@ -6,18 +6,18 @@
 </head>
 <body>
 
-
+    <h2>Add a new truck</h2>
 <form action="#" th:action="@{/trucks}" th:object="${truck}" method="post">
     <div>
         <label th:for="${producer}">Producer</label>
 
     <input type="text" id="producer" name="producer" th:value="*{producer}" />
-        </div>
+        </div><br/>
 
     <div>
         <label th:for="${model}">Model</label>
         <input type="text" id="model" name="model" th:value="*{model}" />
-    </div>
+    </div><br/>
 
     <div>
         <input type="submit" id="doUpdate" name="save truck" value="create truck"/>
@@ -28,13 +28,13 @@
 <br/>
 <br/>
 
-
+    <h2>List of trucks</h2>
 <table id="myTableId" cage:table="true">
     <thead>
     <tr>
         <th>producer</th>
         <th>model</th>
-        <th>truckid</th>
+        <th>ID</th>
         <th>delete</th>
 
     </tr>
@@ -43,9 +43,9 @@
     <tr th:each="truck : ${trucks}">
         <td th:text="${truck.producer}">1</td>
         <td th:text="${truck.model}">Doe</td>
-        <td th:text="${truck.truckid}">Doe</td>
+        <td th:text="${truck.id}">Doe</td>
         <td>
-            <form th:action="@{/trucks/{id}(id=$(truck.id})}" method="post">
+            <form th:action="@{/trucks/{id}(id=${truck.id})}" method="post">
                 <input type="submit" th:field="${truck}" value="Delete truck" onclick="return confirm('Are you sure?')"/>
             </form>
         </td>
