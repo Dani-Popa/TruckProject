@@ -6,10 +6,10 @@
 </head>
 <body>
 
-
+<h2>Create a new route</h2>
 <form action="#" th:action="@{/routes}" th:object="${route}" method="post">
     <div>
-        <label th:for="${start}">Start</label>
+        <label th:for="${start}">Starting point</label>
         <input type="text" id="start" name="start" th:value="*{start}" />
     </div>
     <div>
@@ -35,6 +35,7 @@
 <br/>
 <br/>
 
+<h2>List of routes</h2>
 <table id="myTableId" route:table="true">
     <thead>
     <tr>
