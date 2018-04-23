@@ -3,20 +3,23 @@ package ro.sci.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ro.sci.domain.Route;
 import ro.sci.service.RouteService;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/routes")
 public class RouteController {
     @Autowired
     private RouteService routeService;
 
-    @RequestMapping(value = "/routes", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String listRoutes(Model model) {
         List<Route> routes = routeService.getAll();
         model.addAttribute("routes", routes);
@@ -25,7 +28,7 @@ public class RouteController {
         return "listRoutes";
     }
 
-    @RequestMapping(value ="/routes", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String createRoute(Route route, Model model) {
         routeService.createRoute(route);
         List<Route> routes = routeService.getAll();
@@ -34,13 +37,11 @@ public class RouteController {
         return "listRoutes";
     }
 
-    /*@RequestMapping(value ="/routes", method = RequestMethod.DELETE)
-    public String deleteRouteById(@RequestParam(value = routeId, required = true, defaultValue = "") Route route, Model model) {
-        routeService.deleteRouteById(route);
-        List<Route> routes = routeService.getAll();
-        model.addAttribute("routes", routes);
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public String deleteRouteById(@PathVariable int id) {
+        routeService.deleteRouteById(id);
 
-        return "listRoutes";
-    }*/
+        return "redirect:/routes";
+    }
 
 }

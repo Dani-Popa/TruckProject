@@ -4,4 +4,6 @@ import ro.sci.domain.Route;
 
 public interface RouteDAO extends AbstractDAO<Route> {
 
+    void deleteRouteById(int id);
+
 }
