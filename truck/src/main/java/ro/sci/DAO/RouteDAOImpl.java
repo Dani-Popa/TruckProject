@@ -41,6 +41,7 @@ public class RouteDAOImpl implements RouteDAO {
                 r.setDestination(resultSet.getString(2));
                 r.setDistance(resultSet.getFloat(3));
                 r.setStatus(resultSet.getString(4));
+                r.setId(resultSet.getInt(5));
                 result.add(r);
             }
         }   catch (Exception ex) {
@@ -59,7 +60,10 @@ public class RouteDAOImpl implements RouteDAO {
 
                 Statement statement = connection.createStatement();
         ) {
-            statement.execute("insert into route (start, destination, distance, status) values ('" + r.getStart() + "', '" + r.getDestination() + "', " + r.getDistance() + ", '" + r.getStatus()+ "')");
+            statement.execute(
+                    "insert into route (start, destination, distance, status) values " +
+                    "('" + r.getStart() + "', '" + r.getDestination() + "', " + r.getDistance() + ", '" + r.getStatus() + "')"
+            );
         }   catch (Exception ex) {
             throw  new RuntimeException(ex);
         }
@@ -72,8 +76,23 @@ public class RouteDAOImpl implements RouteDAO {
     }
 
     @Override
-    public Route delete(Route r) {
+    public Route delete(Route c) {
         return null;
+    }
+
+    @Override
+    public void deleteRouteById(int id) {
+        try(
+                Connection connection = newConnection(dbType, host, port, dbName, user, pass);
+
+                Statement statement = connection.createStatement();
+        ) {
+            statement.execute(
+                    "delete from route where id = " + id
+            );
+        }   catch (Exception ex) {
+            throw  new RuntimeException(ex);
+        }
     }
 
     private static Connection newConnection(String type,

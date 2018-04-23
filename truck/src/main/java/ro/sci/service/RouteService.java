@@ -10,5 +10,5 @@ public interface RouteService {
 
     void createRoute(Route route);
 
-    void deleteRouteById(Route route);
+    void deleteRouteById(int id);
 }

@@ -26,7 +26,9 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public void deleteRouteById(Route route) {
-        routeDao.delete(route);
+    public void deleteRouteById(int id) {
+        routeDao.deleteRouteById(id);
     }
+
+
 }

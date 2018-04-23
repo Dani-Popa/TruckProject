@@ -6,7 +6,7 @@ public class Route {
     private String destination;
     private float distance;
     private String status;
-    private long routeId;
+    private int id;
 
     public Route(String start, String destination, float distance, String status) {
         this.start = start;
@@ -49,7 +49,11 @@ public class Route {
         this.status = status;
     }
 
-    public long getRouteId() {
-        return routeId;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
