@@ -42,7 +42,7 @@ public class TruckDAOImpl implements TruckDAO {
                 Truck c = new Truck();
                 c.setProducer(resultSet.getString(1));
                 c.setModel(resultSet.getString(2));
-                c.setTruckid(resultSet.getInt(3));
+                c.setId(resultSet.getInt(3));
                 result.add(c);
             }
         }   catch (Exception ex) {
@@ -61,7 +61,7 @@ public class TruckDAOImpl implements TruckDAO {
 
                 Statement statement = connection.createStatement();
         ) {
-            statement.execute("insert into truck (producer, model,truckid) values('" + c.getProducer() + "', '" +c.getModel() + "', " + c.getTruckid() + ")");
+            statement.execute("insert into truck (producer, model) values('" + c.getProducer() + "', '" +c.getModel() + "')");
         }   catch (Exception ex) {
             throw  new RuntimeException(ex);
         }
@@ -115,6 +115,20 @@ public class TruckDAOImpl implements TruckDAO {
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             System.err.println("Can’t load driver. Verify CLASSPATH");
             System.err.println(e.getMessage());
+        }
+
+    }
+
+    @Override
+    public void deleteTruckById(int id) {
+        try(
+                Connection connection = newConnection(dbType, host, port, dbName, user, pass);
+
+                Statement statement = connection.createStatement();
+        ) {
+            statement.execute("delete from truck where id = " + id);
+        }   catch (Exception ex) {
+            throw  new RuntimeException(ex);
         }
 
     }
