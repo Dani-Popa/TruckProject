@@ -34,11 +34,11 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         ///use UserService to check the login
         String u=request.getParameter("username");
-
-        if (u.equals("admin")) {
+String p=request.getParameter("password");
+        if (u.equals("admin")&&p.equals("admin")) {
             boolean loginWithSuccess = true;
             if (loginWithSuccess) {
-                User user = new User("admin");
+                User user = new User("admin","admin");
                 user.setUserName("admin");
                 if ("admin".equalsIgnoreCase(username)) {
                     user.getRoles().add("Admin");

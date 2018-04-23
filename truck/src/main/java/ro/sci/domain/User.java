@@ -7,9 +7,11 @@ public class User {
 
     List<String> roles = new LinkedList<>();
     private String userName;
+    private String password;
 
-    public User(String userName) {
+    public User(String userName, String password) {
         this.userName = userName;
+        this.password = password;
     }
 
     public List<String> getRoles() {
@@ -26,5 +28,13 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
