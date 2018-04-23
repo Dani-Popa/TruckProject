@@ -25,4 +25,9 @@ public class TruckServiceImpl implements TruckService {
     public void createTruck(Truck truck) {
         truckDao.create(truck);
     }
+
+    @Override
+    public void deleteTruckById(int id) {
+        truckDao.deleteTruckById(id);
+    }
 }

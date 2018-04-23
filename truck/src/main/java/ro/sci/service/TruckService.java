@@ -9,4 +9,6 @@ public interface TruckService {
     List<Truck> getAll();
 
     void createTruck(Truck truck);
+
+    void deleteTruckById(int id);
 }

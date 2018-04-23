@@ -4,16 +4,15 @@ public class Truck {
 
     private String producer;
     private String model;
-    private int truckid;
+    private int id;
 
 
     public Truck() {
     }
 
-    public Truck(String producer, String model, int truckid) {
+    public Truck(String producer, String model) {
         this.producer = producer;
         this.model = model;
-        this.truckid = truckid;
     }
 
     public String getProducer() {
@@ -32,11 +31,11 @@ public class Truck {
         this.model = model;
     }
 
-    public int getTruckid() {
-        return truckid;
+    public int getId() {
+        return id;
     }
 
-    public void setTruckid(int truckid) {
-        this.truckid = truckid;
+    public void setId(int id) {
+        this.id = id;
     }
 }

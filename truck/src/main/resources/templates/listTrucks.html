@@ -20,12 +20,6 @@
     </div>
 
     <div>
-        <label th:for="${truckid}">TruckID</label>
-    <input type="text" id="truckid" name="truckid" th:value="*{truckid}" />
-    </div>
-
-
-    <div>
         <input type="submit" id="doUpdate" name="save truck" value="create truck"/>
     </div>
 </form>
@@ -40,7 +34,8 @@
     <tr>
         <th>producer</th>
         <th>model</th>
-        <th>   truckid</th>
+        <th>truckid</th>
+        <th>delete</th>
 
     </tr>
     </thead>
@@ -49,6 +44,11 @@
         <td th:text="${truck.producer}">1</td>
         <td th:text="${truck.model}">Doe</td>
         <td th:text="${truck.truckid}">Doe</td>
+        <td>
+            <form th:action="@{/trucks/{id}(id=$(truck.id})}" method="post">
+                <input type="submit" th:field="${truck}" value="Delete truck" onclick="return confirm('Are you sure?')"/>
+            </form>
+        </td>
 
     </tr>
     </tbody>
