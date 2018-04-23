@@ -15,15 +15,12 @@ public class ApplicationConfiguration {
 
     @Bean
     public TruckDAO truckDao() {
-        return new TruckDAOImpl("postgresql","localhost", "5433", "trucks",
-                "postgres", "postgres");
+        return new TruckDAOImpl("postgresql","localhost", "5432", "trucks",
+                "postgres", "test");
     }
 
-    @Bean
-    public RouteDAO routeDao() {
-        return new RouteDAOImpl("postgresql","localhost", "5433", "trucks",
-                "postgres", "postgres");
-    }
+
+
 
     @Bean
     public RouteDAO routeDao() {

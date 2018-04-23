@@ -9,6 +9,7 @@ import ro.sci.domain.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Controller
 public class LoginController {
@@ -29,21 +30,26 @@ public class LoginController {
 
     @RequestMapping("/onLogin")
     public ModelAndView onLogin(String username, String pass,
-                                HttpServletRequest request, HttpServletResponse response) {
+                                HttpServletRequest request, HttpServletResponse response) throws IOException {
         ModelAndView modelAndView = new ModelAndView();
         ///use UserService to check the login
-        boolean loginWithSuccess =  true;
-        if (loginWithSuccess) {
-            User user = new User("admin");
-            user.setUserName("admin");
-            if ("admin".equalsIgnoreCase(username)) {
-                user.getRoles().add("Admin");
+        String u=request.getParameter("username");
+
+        if (u.equals("admin")) {
+            boolean loginWithSuccess = true;
+            if (loginWithSuccess) {
+                User user = new User("admin");
+                user.setUserName("admin");
+                if ("admin".equalsIgnoreCase(username)) {
+                    user.getRoles().add("Admin");
+                }
+
+                request.getSession().setAttribute("currentUser", user);
+                modelAndView.setView(new RedirectView((String) request.getSession().getAttribute("nextUrl")));
             }
-
-            request.getSession().setAttribute("currentUser", user);
-            modelAndView.setView(new RedirectView((String)request.getSession().getAttribute("nextUrl")));
+      }else{
+            response.sendRedirect("Client.html");
         }
-
         return modelAndView;
     }
 }

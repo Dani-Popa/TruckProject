@@ -33,6 +33,7 @@ public class TruckDAOImpl implements TruckDAO {
                 Connection connection = newConnection(dbType, host, port,
                         dbName, user, pass);
 
+
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("select * from truck");
 
