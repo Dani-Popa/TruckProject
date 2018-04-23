@@ -23,7 +23,7 @@ public class LoginController {
 
     @RequestMapping(value = "/acces-denied",method = RequestMethod.GET )
     public ModelAndView accesDenied(){
-        ModelAndView modelAndView=new ModelAndView("auth/access-denied");
+        ModelAndView modelAndView=new ModelAndView("auth/acces-denied");
 
         return modelAndView;
     }
@@ -43,12 +43,11 @@ public class LoginController {
                 if ("admin".equalsIgnoreCase(username)) {
                     user.getRoles().add("Admin");
                 }
-
                 request.getSession().setAttribute("currentUser", user);
                 modelAndView.setView(new RedirectView((String) request.getSession().getAttribute("nextUrl")));
             }
       }else{
-            response.sendRedirect("Client.html");
+            response.sendRedirect("client.html");
         }
         return modelAndView;
     }

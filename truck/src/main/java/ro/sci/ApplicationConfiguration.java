@@ -19,7 +19,11 @@ public class ApplicationConfiguration {
                 "postgres", "test");
     }
 
-
+    @Bean
+    public RouteDAO routeDao() {
+        return new RouteDAOImpl("postgresql","localhost", "5432", "trucks",
+                "postgres", "test");
+    }
 
 
     @Bean

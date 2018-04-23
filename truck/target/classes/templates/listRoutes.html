@@ -6,26 +6,26 @@
 </head>
 <body>
 
-
+<br/>
+<h2>Create a new route</h2>
 <form action="#" th:action="@{/routes}" th:object="${route}" method="post">
     <div>
-        <label th:for="${start}">Start</label>
+        <label th:for="${start}">Starting point</label>
         <input type="text" id="start" name="start" th:value="*{start}" />
-    </div>
+    </div><br/>
     <div>
         <label th:for="${destination}">Destination</label>
         <input type="text" id="destination" name="destination" th:value="*{destination}" />
-    </div>
+    </div><br/>
     <div>
         <label th:for="${distance}">Distance</label>
         <input type="text" id="distance" name="distance" th:value="*{distance}" />
-    </div>
+    </div><br/>
 
     <div>
         <label th:for="${status}">Status</label>
         <input type="text" id="status" name="status" th:value="*{status}" />
-    </div>
-
+</div><br/>
 
     <div>
         <input type="submit" id="doUpdate" name="save route" value="Create route"/>
@@ -36,6 +36,7 @@
 <br/>
 <br/>
 
+<h2>List of routes</h2>
 <table id="myTableId" route:table="true">
     <thead>
     <tr>
@@ -43,6 +44,7 @@
         <th>Destination</th>
         <th>Distance</th>
         <th>Status</th>
+        <th>ID</th>
         <th>Delete</th>
 
     </tr>
@@ -53,8 +55,12 @@
         <td th:text="${route.destination}"></td>
         <td th:text="${route.distance}"></td>
         <td th:text="${route.status}"></td>
-        <td><form action="#" th:action="@{/routes}" th:object="${route}" method="delete">
-            <div><input type="submit" id="delete" name="delete route" value="Delete route"/></div></form></td>
+        <td th:text="${route.id}"></td>
+        <td>
+            <form th:action="@{/routes/{id}(id=${route.id})}" method="post">
+                <input type="submit" th:field="${route}" value="Delete route" onclick="return confirm('Are you sure?')"/>
+            </form>
+        </td>
 
 
     </tr>
