@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:cage="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Drivers list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'List, ' + ${drivers}" />
+
+
+<form action="#" th:action="@{/drivers}" th:object="${driver}" method="post">
+    <input type="text" id="name" name="name" th:value="*{driver.name}" />
+    <input type="text" id="id" name="id" th:value="*{driver.id}" />
+
+</form>
+
+</body>
+</html>

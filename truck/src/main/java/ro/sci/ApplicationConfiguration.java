@@ -25,6 +25,12 @@ public class ApplicationConfiguration {
                 "postgres", "test");
     }
 
+    @Bean
+    public DriverDAO driverDao() {
+        return new DriverDAOImpl("postgresql","localhost", "5432", "trucks",
+                "postgres", "raimundo");
+    }
+
 
     @Bean
     public DataSource dataSource() {
